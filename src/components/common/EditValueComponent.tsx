@@ -48,55 +48,57 @@ const EditValueComponent: React.FunctionComponent<Props> = (props) => {
 
     return (
 
-        <>
-        {
-            props.role == Role.EditValue &&
-            <div style={props.style}
-                onMouseLeave={() => { setShowEdit(false) }}
-                onMouseEnter={() => { setShowEdit(true) }}
+        <div style={props.style}>{props.value}</div>
 
-                className="d-flex justify-content-between align-items-start">
-                <div>{props.value}</div>
-                {
-                    isShowEdit ?
-                        <a className="link outline-primary" style={{ cursor: 'pointer', marginLeft: 10 }} onClick={() => setSmShow(true)}>
-                            <PencilSvg />
-                        </a>
-                        : <div />
-                }
-            </div>
-        }
+        // <>
+        // {
+        //     props.role == Role.EditValue &&
+        //     <div style={props.style}
+        //         onMouseLeave={() => { setShowEdit(false) }}
+        //         onMouseEnter={() => { setShowEdit(true) }}
 
-        {
-            props.role == Role.AddValue &&
-            <Button  style={props.style} variant="link" size="sm" onClick={() => setSmShow(true)}>{props.titleAdd??"Добавить"}</Button>                      
-        }
+        //         className="d-flex justify-content-between align-items-start">
+        //         <div>{props.value}</div>
+        //         {
+        //             isShowEdit ?
+        //                 <a className="link outline-primary" style={{ cursor: 'pointer', marginLeft: 10 }} onClick={() => setSmShow(true)}>
+        //                     <PencilSvg />
+        //                 </a>
+        //                 : <div />
+        //         }
+        //     </div>
+        // }
+
+        // {
+        //     props.role == Role.AddValue &&
+        //     <Button  style={props.style} variant="link" size="sm" onClick={() => setSmShow(true)}>{props.titleAdd??"Добавить"}</Button>                      
+        // }
             
 
 
-            <Modal
-                size={props.contentType == ContentType.Textarea ? "lg" : "sm"}
-                show={smShow} centered
-                onHide={() => setSmShow(false)}
-            >
-                <Modal.Header closeButton>
-                </Modal.Header>
-                <Modal.Body>
-                    {lodash.isNumber(props.value) && props.contentType == ContentType.Float &&
-                        <YupValidationNumberComponent initial_value={Number(props.value)} buttonText='Изменить' postAction={PostNewValue} />
-                    }
+        //     <Modal
+        //         size={props.contentType == ContentType.Textarea ? "lg" : "sm"}
+        //         show={smShow} centered
+        //         onHide={() => setSmShow(false)}
+        //     >
+        //         <Modal.Header closeButton>
+        //         </Modal.Header>
+        //         <Modal.Body>
+        //             {lodash.isNumber(props.value) && props.contentType == ContentType.Float &&
+        //                 <YupValidationNumberComponent initial_value={Number(props.value)} buttonText='Изменить' postAction={PostNewValue} />
+        //             }
 
-                    {lodash.isString(props.value) && props.contentType == ContentType.String &&
-                        <YupValidationStringComponent initial_value={String(props.value)} buttonText='Изменить' isTextarea={false} postAction={PostNewValue} />
-                    }
+        //             {lodash.isString(props.value) && props.contentType == ContentType.String &&
+        //                 <YupValidationStringComponent initial_value={String(props.value)} buttonText='Изменить' isTextarea={false} postAction={PostNewValue} />
+        //             }
 
-                    {lodash.isString(props.value) && props.contentType == ContentType.Textarea &&
-                        <YupValidationStringComponent initial_value={String(props.value)} buttonText='Изменить' isTextarea={true} postAction={PostNewValue} />
-                    }
+        //             {lodash.isString(props.value) && props.contentType == ContentType.Textarea &&
+        //                 <YupValidationStringComponent initial_value={String(props.value)} buttonText='Изменить' isTextarea={true} postAction={PostNewValue} />
+        //             }
 
-                </Modal.Body>
-            </Modal>
-        </>
+        //         </Modal.Body>
+        //     </Modal>
+        // </>
 
 
 

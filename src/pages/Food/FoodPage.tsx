@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Tabs, Tab, Form, InputGroup, FormControl, Button} from 'react-bootstrap';
-import FoodGroupAllView from '../../components/FoodGroupAllView';
+import FoodGroupAllView from '../../components/food/group/FoodGroupView';
 import FoodAllView from '../../components/FoodAllView';
 import SanPinGroupAllView from '../../components/SanPinGroupAllView';
 import SearchFormView from '../../components/SearchFormView';

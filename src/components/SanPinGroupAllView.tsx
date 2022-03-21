@@ -4,7 +4,7 @@ import { Row, Card, Col, Button } from 'react-bootstrap';
 import GetService from '../api/GetService';
 import lodash from 'lodash';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import FoodGroupItem, { RequestSource } from './FoodGroupView';
+import FoodGroupItem, { RequestSource } from './food/components/ListFoodInGroupComponent';
 import AccordionComponent from './common/AccordionComponent';
 import { useIsLoading } from '../hook/useIsLoading';
 import TrashSvg from './common/svg/TrashSvg';
@@ -15,7 +15,7 @@ import PutService from '../api/PutService';
 import { GetSanPinGroupAllModel, IBaseTypeWhithStartDateIdName, IStandardSanpinGetModel } from '../api/models/GetModel';
 import { FoodGroupPostModel, StandardSanpinPostModel } from '../api/models/PostModel';
 import DeleteService from '../api/DeleteService';
-import { FoodGroupSanpoinPutModel, StandardSanpinPutModel } from '../api/models/PutModel';
+import { FoodGroupSanpinPutModel, StandardSanpinPutModel } from '../api/models/PutModel';
 
 const SanPinGroupAllView: React.FunctionComponent = () => {
     const [foodGroups, setFoodGroups] = useState<GetSanPinGroupAllModel[]>();
@@ -54,7 +54,7 @@ const SanPinGroupAllView: React.FunctionComponent = () => {
 
     async function EditNameInFoodGroup(id: string, value: string) {
 
-        const model: FoodGroupSanpoinPutModel = {
+        const model: FoodGroupSanpinPutModel = {
             Name: value
         };
 
@@ -64,7 +64,7 @@ const SanPinGroupAllView: React.FunctionComponent = () => {
 
     async function EditDescriptionInFoodGroup(id: string, value: string) {
 
-        const model: FoodGroupSanpoinPutModel = {
+        const model: FoodGroupSanpinPutModel = {
             Description: value
         };
 

@@ -4,13 +4,13 @@ export type FoodGroupPutModel = {
     ParentGroupId?: string
 };
 
-export type FoodGroupSanpoinPutModel = {
+export type FoodGroupSanpinPutModel = {
     Name?: string,
     ParentGroupId?: string
     Description?: string,
     StandardSanpin?: StandardSanpinPutModel[]
 };
-
+ 
 export type StandardSanpinPutModel = {
 
     Value: number,
