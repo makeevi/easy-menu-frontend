@@ -4,11 +4,8 @@ export interface IBaseTypeWhithStartDateIdName {
     StartDate: Date,
 }
 
-export type GetFoodGroupAllModel = {
-    StartDate: Date,
-    Count: number,
-    Name: string,
-    Id: string
+export interface GetFoodGroupAllModel extends IBaseTypeWhithStartDateIdName {
+    Count: number
 };
 
 export interface IFoodWeightTypeGetModel extends IBaseTypeWhithStartDateIdName{
@@ -26,23 +23,22 @@ export interface IStandardSanpinGetModel extends IBaseTypeWhithStartDateIdName {
 }
 
 export interface GetSanPinGroupAllModel extends IBaseTypeWhithStartDateIdName  {
-    Count: number,
-    Description : string,
-    StandardSanpinGetModels : IStandardSanpinGetModel[]
+    Count: number
 };
 
-export type GetFoodGroupModel = {
+export interface GetFoodGroupModel {
     StartDate: Date,
     Name: string,
     Id: string,
     Food: GetFoodBasicInfoModel[]
 };
 
-export type GetSanPinGroupModel = {
+export interface GetSanPinGroupModel {
     StartDate: Date,
     Name: string,
     Id: string,
-    Description: string
+    Description : string,
+    StandardSanpinGetModels : IStandardSanpinGetModel[]
 };
 
 export interface GetFoodBasicInfoModel {

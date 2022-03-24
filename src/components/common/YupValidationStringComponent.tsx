@@ -6,6 +6,7 @@ import * as yup from "yup"
 
 type NewGroupProps = {
     style?: {};
+    styleBody?: {};
     postAction?: (use_value: string) => void;
     initial_value?: string
     label?: string;
@@ -20,10 +21,10 @@ const YupValidationStringComponent: React.FunctionComponent<NewGroupProps> = (pr
 
     const schema = yup.object().shape({
         input_value: yup
-        .string()
-        .required().label("Является обязательным полем")
-        .max(255).label("Максимальное значение меньше допустимого")
-        .min(3).label("Минимальное значение меньше допустимого")
+            .string()
+            .required().label("Является обязательным полем")
+            .max(255).label("Максимальное значение меньше допустимого")
+            .min(3).label("Минимальное значение меньше допустимого")
     });
 
     const renderError = (message: string) => <p style={{ color: "red" }}>{message}</p>;
@@ -31,50 +32,57 @@ const YupValidationStringComponent: React.FunctionComponent<NewGroupProps> = (pr
     return (
 
         <Formik
-        validationSchema={schema}
-        initialValues={{
-            input_value: props.initial_value,
-        }}
-        onSubmit={(values, { resetForm }) => {
-            if(props.postAction !== undefined && values.input_value !== undefined)
-            {
-                props.postAction(values.input_value);
-                resetForm();
-            }
-        }}
-    >
+            validationSchema={schema}
+            initialValues={{
+                input_value: props.initial_value,
+            }}
+            onSubmit={(values, { resetForm }) => {
+                if (props.postAction !== undefined && values.input_value !== undefined) {
+                    props.postAction(values.input_value);
+                    resetForm();
+                }
+            }}
+        >
 
-        {({ handleChange, handleBlur, values, handleSubmit, errors, touched, isValid }) => (
+            {({ handleChange, handleBlur, values, handleSubmit, errors, touched, isValid }) => (
 
-            <Form style={props.style} onSubmit={handleSubmit} >
-                <Form.Group className="mb-3" controlId="formBasicEmail">
+                <Form style={props.style} onSubmit={handleSubmit} >
+                    <Form.Group className="mb-3" controlId="formBasicEmail">
 
-                    {props.label !== undefined && <Form.Label>{props.label}</Form.Label>}
-                    
-                    <Form.Control type="text"
-                        placeholder={props.placeholder?props.placeholder:''} 
-                        name='input_value'
-                        value={values.input_value}
-                        onChange={handleChange}
-                        onBlur={handleBlur}
-                        isValid={touched.input_value && !errors.input_value} 
-                        as={props.isTextarea?"textarea":undefined}
-                    />
+                        {props.label !== undefined && <Form.Label>{props.label}</Form.Label>}
 
-                <ErrorMessage name="input_value" render={renderError} />
+                        <Form.Control style={props.styleBody} type="text"
+                            placeholder={props.placeholder ? props.placeholder : ''}
+                            name='input_value'
+                            value={values.input_value}
+                            onChange={handleChange}
+                            onBlur={handleBlur}
+                            isValid={touched.input_value && !errors.input_value}
+                            as={props.isTextarea ? "textarea" : undefined}
+                        />
 
-                {props.desc !== undefined && <Form.Text className="text-muted">{props.desc}</Form.Text>}
+                        <ErrorMessage name="input_value" render={renderError} />
 
-                </Form.Group>
-                <Button variant="primary" type="submit" >
-                    {props.buttonText}
-                </Button>
-            </Form>
+                        {props.desc !== undefined && <Form.Text className="text-muted">{props.desc}</Form.Text>}
 
-        )}
+                    </Form.Group>
+
+                    <div className="d-flex justify-content-between align-items-start">
+                        <div></div>
+
+                        <Button variant="primary" type="submit" >
+                            {props.buttonText}
+                        </Button>
+                    </div>
 
 
-    </Formik>
+
+                </Form>
+
+            )}
+
+
+        </Formik>
     );
 };
 

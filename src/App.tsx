@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {BrowserRouter, Route, Routes} from 'react-router-dom';
-import FoodGroupAllView from './components/food/group/FoodGroupView';
-import ListFoodInGroupComponent from './components/food/components/ListFoodInGroupComponent';
+import FoodGroupView from './components/referenceBook/FoodGroupView';
+import ListFoodInGroup from './components/referenceBook/components/foodGroup/ListFoodInGroup';
 import FoodPage from './pages/food/FoodPage';
 import MenuPage from './pages/menu/MenuPage';
 import TestPage from './pages/food/Test/TestPage';

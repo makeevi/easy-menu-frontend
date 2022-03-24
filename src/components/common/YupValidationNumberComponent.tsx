@@ -15,7 +15,7 @@ type Props = {
 }
 
 
-const YupValidationNumberUi: React.FunctionComponent<Props> = (props) => {
+const YupValidationNumberComponent: React.FunctionComponent<Props> = (props) => {
 
     const schema = yup.object().shape({
         input_value: yup
@@ -82,4 +82,4 @@ const YupValidationNumberUi: React.FunctionComponent<Props> = (props) => {
     );
 };
 
-export default YupValidationNumberUi;
+export default YupValidationNumberComponent;

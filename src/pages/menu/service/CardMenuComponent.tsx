@@ -6,7 +6,7 @@ type Props = {
     onClick: () => void;
     className?: string
 }
-//height:"150px", width:"150px", 
+//height:"150px", width:"150px" 1, 
 const CardMenuComponent: React.FunctionComponent<Props> = (props) => {
     return (
 

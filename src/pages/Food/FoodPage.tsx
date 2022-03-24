@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { Tabs, Tab, Form, InputGroup, FormControl, Button} from 'react-bootstrap';
-import FoodGroupAllView from '../../components/food/group/FoodGroupView';
+import FoodGroupView from '../../components/referenceBook/FoodGroupView';
 import FoodAllView from '../../components/FoodAllView';
-import SanPinGroupAllView from '../../components/SanPinGroupAllView';
+import SanPinGroupView from '../../components/referenceBook/SanPinGroupView';
 import SearchFormView from '../../components/SearchFormView';
 
 const FoodPage: React.FunctionComponent = () => {
@@ -19,10 +19,10 @@ const FoodPage: React.FunctionComponent = () => {
             className="mb-3"
          >
             <Tab eventKey="foodGroup" title="Группы продуктов">
-                <FoodGroupAllView/>
+                <FoodGroupView/>
             </Tab>
             <Tab eventKey="sanPinGroup" title="СанПин">
-                <SanPinGroupAllView/>
+  
             </Tab>
 
             <Tab eventKey="foodsAll" title="Продукты">

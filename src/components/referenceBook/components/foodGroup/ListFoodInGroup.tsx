@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import GetService from '../../../api/GetService';
+import GetService from '../../../../api/GetService';
 import lodash from 'lodash';
 import { ListGroup } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import DeleteButton from '../../common/button/DeleteButton';
-import { useIsLoading } from '../../../hook/useIsLoading';
-import EditValueComponent from '../../common/EditValueComponent';
-import DeleteService from '../../../api/DeleteService';
-import { GetFoodGroupModel } from '../../../api/models/GetModel';
+import DeleteButton from '../../../common/button/DeleteButton';
+import { useIsLoading } from '../../../../hook/useIsLoading';
+import EditValueComponent from '../../../common/EditValueComponent';
+import DeleteService from '../../../../api/DeleteService';
+import { GetFoodGroupModel } from '../../../../api/models/GetModel';
 
 type Props = {
     idFoodGroup: string;
@@ -20,7 +20,7 @@ export enum RequestSource {
     SanPin
 };
 
-const ListFoodInGroupComponent: React.FC<Props> = (props) => {
+const ListFoodInGroup: React.FC<Props> = (props) => {
 
     const [foodGroup, setFoodGroup] = useState<GetFoodGroupModel>();
 
@@ -41,7 +41,7 @@ const ListFoodInGroupComponent: React.FC<Props> = (props) => {
 
     async function DeleteFoodInGroup(idFood: string) {
 
-        if (props.source == RequestSource.FoodGroup) {
+        if (props.source === RequestSource.FoodGroup) {
 
             await DeleteService.DeleteFoodInFoodGroup(props.idFoodGroup, idFood);
         }
@@ -70,6 +70,6 @@ const ListFoodInGroupComponent: React.FC<Props> = (props) => {
 
 };
 
-export default ListFoodInGroupComponent;
+export default ListFoodInGroup;
 
 
