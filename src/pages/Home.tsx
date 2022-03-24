@@ -3,15 +3,15 @@ import React, { useEffect } from 'react';
 import MenuPage from './menu/MenuPage';
 import 'bootstrap/dist/css/bootstrap.min.css';
 const Home = () => {
-const { componet, setComponet: setCompenet } = useGlobalContext()
+    const { componet, setComponet: setComponet } = useGlobalContext()
 
-useEffect(() => {
+    useEffect(() => {
 
-    if(setCompenet!== undefined)
-        setCompenet(<MenuPage/>);
+        if (setComponet !== undefined)
+            setComponet(<MenuPage />);
 
-}, []);
+    }, []);
 
-return <div>{componet}</div>
+    return <div>{componet}</div>
 }
 export default Home

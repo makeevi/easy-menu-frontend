@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
-import { Tabs, Tab, Form, InputGroup, FormControl, Button} from 'react-bootstrap';
-import FoodGroupView from '../../components/referenceBook/FoodGroupView';
+import { Tabs, Tab, Form, InputGroup, FormControl, Button } from 'react-bootstrap';
+import FoodGroupView from '../../components/referenceBook/foodGroup/FoodGroupView';
 import FoodAllView from '../../components/FoodAllView';
-import SanPinGroupView from '../../components/referenceBook/SanPinGroupView';
 import SearchFormView from '../../components/SearchFormView';
 
 const FoodPage: React.FunctionComponent = () => {
@@ -11,24 +10,24 @@ const FoodPage: React.FunctionComponent = () => {
     return (
         <React.Fragment>
 
-        <SearchFormView/>
+            <SearchFormView />
 
-        <Tabs
-            activeKey={key}
-            onSelect={(k) => setKey(k)}
-            className="mb-3"
-         >
-            <Tab eventKey="foodGroup" title="Группы продуктов">
-                <FoodGroupView/>
-            </Tab>
-            <Tab eventKey="sanPinGroup" title="СанПин">
-  
-            </Tab>
+            <Tabs
+                activeKey={key}
+                onSelect={(k) => setKey(k)}
+                className="mb-3"
+            >
+                <Tab eventKey="foodGroup" title="Группы продуктов">
+                    <FoodGroupView />
+                </Tab>
+                <Tab eventKey="sanPinGroup" title="СанПин">
 
-            <Tab eventKey="foodsAll" title="Продукты">
-                <FoodAllView/>            
-            </Tab>
-         </Tabs>
+                </Tab>
+
+                <Tab eventKey="foodsAll" title="Продукты">
+                    <FoodAllView />
+                </Tab>
+            </Tabs>
 
         </React.Fragment>
 

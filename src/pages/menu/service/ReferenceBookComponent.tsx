@@ -2,8 +2,8 @@ import React from 'react';
 import { Stack } from 'react-bootstrap';
 import MenuSvg from '../../../components/common/svg/MenuSvg';
 import FoodAllView from '../../../components/FoodAllView';
-import FoodGroupView from '../../../components/referenceBook/FoodGroupView';
-import SanPinGroup from '../../../components/referenceBook/SanPinGroup';
+import FoodGroupView from '../../../components/referenceBook/foodGroup/FoodGroupView';
+import SanPinGroup from '../../../components/referenceBook/sanpin/SanPinGroup';
 import { useGlobalContext } from '../../../hook/GlobalContext';
 import CardMenuComponent from './CardMenuComponent';
 
