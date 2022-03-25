@@ -1,22 +1,24 @@
 import lodash from 'lodash';
 import React, { useEffect, useState } from 'react';
 import { Row, Card, Col, Badge, Button, Form, ButtonGroup, DropdownButton, Dropdown } from 'react-bootstrap';
-import GetService from '../api/GetService';
-import { GetFoodModel } from '../api/models/GetModel';
 import { useIsLoading } from '../hook/useIsLoading';
 import EditValueComponent, { ContentType } from './common/EditValueComponent';
 import TrashSvg from './common/svg/TrashSvg';
 import YupValidationStringComponent from './common/YupValidationStringComponent';
 import { format } from 'date-fns';
 import AccordionComponent from './common/AccordionComponent';
+import { useGlobalContext } from '../hook/GlobalContext';
+import { GetFoodModel } from '../api/get/models/food/food/GetFoodModel';
 
 const FoodAllView: React.FunctionComponent = () => {
+
+    const { service } = useGlobalContext();
 
     const [foods, setFoods] = useState<GetFoodModel[]>();
     const [loadingFoodAll, isLoadingFoodAll, error] = useIsLoading(async () => {
 
-        const response = await GetService.GetFoodAll();
-        setFoods(response.data);
+        const response = await service?.GetService.FoodService.GetFoodAll();
+        setFoods(response);
     });
 
     useEffect(() => {
@@ -77,7 +79,7 @@ const FoodAllView: React.FunctionComponent = () => {
                         <YupValidationStringComponent
                             buttonText='Создать'
                             label='Создайте новый продукт в этой форме'
-                            placeholder="Укажите наименование продукта" 
+                            placeholder="Укажите наименование продукта"
                             isTextarea={false}
                             initial_value=''
                             postAction={(a) => {

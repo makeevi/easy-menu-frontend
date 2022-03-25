@@ -1,13 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { Tab, Tabs } from 'react-bootstrap';
-import GetService from '../../../../api/GetService';
-import { GetSanPinGroupModel, IBaseTypeWhithStartDateIdName } from '../../../../api/models/GetModel';
 import { useIsLoading } from '../../../../hook/useIsLoading';
 import FoodsTabItem from './tabItems/FoodsTabItem';
 import NormTabItem from './tabItems/NormTabItem';
-import { format } from 'date-fns';
 import DescriptionTabItem from './tabItems/DescriptionTabItem';
-import Service from '../../../../api/Service';
+import { useGlobalContext } from '../../../../hook/GlobalContext';
+import { GetSanPinGroupModel } from '../../../../api/get/models/sanPin/group/GetSanPinGroupModel';
 
 
 
@@ -18,11 +16,12 @@ type Props = {
 const DetailTemplate: React.FunctionComponent<Props> = (props) => {
 
     const [group, setGroup] = useState<GetSanPinGroupModel>();
+    const { service } = useGlobalContext();
 
     const [loadingGroup, isLoadingGroup, error] = useIsLoading(async () => {
 
-        const responseFoodGroups = await GetService.GetSanPinGroup(props.id);
-        setGroup(responseFoodGroups.data);
+        const responseFoodGroups = await service?.GetService.SanPinService.GetSanPinGroup(props.id);
+        setGroup(responseFoodGroups);
     });
 
     useEffect(() => {

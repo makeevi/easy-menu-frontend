@@ -1,9 +1,7 @@
 import React from 'react';
-import { Form } from 'react-bootstrap';
-import { propTypes } from 'react-bootstrap/esm/Image';
-import { GetSanPinGroupModel } from '../../../../../api/models/GetModel';
-import { FoodGroupSanpinPutModel } from '../../../../../api/models/PutModel';
-import PutService from '../../../../../api/PutService';
+import { GetSanPinGroupModel } from '../../../../../api/get/models/sanPin/group/GetSanPinGroupModel';
+import { FoodGroupSanpinPutModel } from '../../../../../api/put/models/sanPin/group/FoodGroupSanpinPutModel';
+import { useGlobalContext } from '../../../../../hook/GlobalContext';
 import LinkPrimaryButton, { Role } from '../../../../common/button/LinkPrimaryButton';
 import ModalComponent, { Size } from '../../../../common/ModalComponent';
 import YupValidationStringComponent from '../../../../common/YupValidationStringComponent';
@@ -17,6 +15,8 @@ type Props = {
 
 const DescriptionTabItem: React.FunctionComponent<Props> = (props) => {
 
+    const { service } = useGlobalContext();
+
 
 
     async function EditDescriptionInFoodGroup(id: string, value: string) {
@@ -25,7 +25,7 @@ const DescriptionTabItem: React.FunctionComponent<Props> = (props) => {
             Description: value
         };
 
-        const response = await PutService.PutFoodGroupSanpin(id, model);
+        const response = await service?.PutService.SanPinServer.PutFoodGroupSanpin(id, model);
         props.loadingGroup && props.loadingGroup();
     }
 

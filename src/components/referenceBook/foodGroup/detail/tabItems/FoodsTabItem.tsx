@@ -1,13 +1,9 @@
-import React, { useEffect, useState } from 'react';
-import GetService from '../../../../../api/GetService';
+import React, { } from 'react';
 import lodash from 'lodash';
 import { ListGroup } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import DeleteButton from '../../../../common/button/DeleteButton';
-import { useIsLoading } from '../../../../../hook/useIsLoading';
-import EditValueComponent from '../../../../common/EditValueComponent';
-import DeleteService from '../../../../../api/DeleteService';
-import { GetFoodGroupModel } from '../../../../../api/models/GetModel';
+import { GetFoodGroupModel } from '../../../../../api/get/models/food/group/GetFoodGroupModel';
 
 type Props = {
     model: GetFoodGroupModel;

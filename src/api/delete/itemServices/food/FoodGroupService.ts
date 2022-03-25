@@ -1,5 +1,5 @@
 import axios from "axios";
-import BaseService from "../../common/service/BaseService";
+import BaseService from "../../../common/service/BaseService";
 export default class FoodGroupService extends BaseService {
 
     async DeleteFoodGroup(id: string) {

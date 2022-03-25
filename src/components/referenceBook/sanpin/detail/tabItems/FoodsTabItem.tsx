@@ -1,13 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import GetService from '../../../../../api/GetService';
 import lodash from 'lodash';
 import { ListGroup } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import DeleteButton from '../../../../common/button/DeleteButton';
 import { useIsLoading } from '../../../../../hook/useIsLoading';
-import EditValueComponent from '../../../../common/EditValueComponent';
-import DeleteService from '../../../../../api/DeleteService';
-import { GetFoodGroupModel } from '../../../../../api/models/GetModel';
+import { useGlobalContext } from '../../../../../hook/GlobalContext';
+import { GetSanPinGroupModel } from '../../../../../api/get/models/sanPin/group/GetSanPinGroupModel';
 
 type Props = {
     idFoodGroup: string;
@@ -16,13 +14,15 @@ type Props = {
 
 const FoodsTabItem: React.FC<Props> = (props) => {
 
-    const [foodGroup, setFoodGroup] = useState<GetFoodGroupModel>();
+    const { service } = useGlobalContext();
+
+    const [foodGroup, setFoodGroup] = useState<GetSanPinGroupModel>();
 
     const [loadingFoodGroup, isLoadingFoodGroup, error] = useIsLoading(async () => {
 
-        const response = await GetService.GetSanPinGroup(props.idFoodGroup);
+        const response = await service?.GetService.SanPinService.GetSanPinGroup(props.idFoodGroup);
 
-        setFoodGroup(response.data);
+        setFoodGroup(response);
     });
 
     useEffect(() => {
@@ -33,7 +33,7 @@ const FoodsTabItem: React.FC<Props> = (props) => {
 
     async function DeleteFoodInGroup(idFood: string) {
 
-        await DeleteService.DeleteFoodInFoodGroup(props.idFoodGroup, idFood);
+        await service?.DeleteService.SanPinService.DeleteFoodInGroup(props.idFoodGroup, idFood);
 
         loadingFoodGroup();
     }

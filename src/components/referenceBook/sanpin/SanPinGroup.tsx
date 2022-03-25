@@ -1,25 +1,23 @@
 import React, { useEffect, useState } from 'react';
-import GetService from '../../../api/GetService';
 import lodash from 'lodash';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useIsLoading } from '../../../hook/useIsLoading';
 import YupValidationStringComponent from '../../common/YupValidationStringComponent';
-import PostService from '../../../api/PostService';
-import DeleteService from '../../../api/DeleteService';
-import PutService from '../../../api/PutService';
-import { FoodGroupPutModel } from '../../../api/models/PutModel';
-import { FoodGroupPostModel } from '../../../api/models/PostModel';
-import { GetSanPinGroupAllModel } from '../../../api/models/GetModel';
 import TabTemplate from './TabTemplate';
 import LinkPrimaryButton, { Role } from '../../common/button/LinkPrimaryButton';
 import ModalComponent, { Size } from '../../common/ModalComponent';
+import { useGlobalContext } from '../../../hook/GlobalContext';
+import { GetSanPinGroupAllModel } from '../../../api/get/models/sanPin/group/GetSanPinGroupAllModel';
+import { FoodGroupPostModel } from '../../../api/post/models/food/group/FoodGroupPostModel';
+import { FoodGroupPutModel } from '../../../api/put/models/food/group/FoodGroupPutModel';
 
 const SanPinGroupView: React.FunctionComponent = () => {
+    const { service } = useGlobalContext();
     const [foodGroups, setFoodGroups] = useState<GetSanPinGroupAllModel[]>();
     const [loadingFoodGroupAll, isLoadingFoodGroupAll, error] = useIsLoading(async () => {
 
-        const response = await GetService.GetSanPinGroupAll();
-        setFoodGroups(response.data);
+        const response = await service?.GetService.SanPinService.GetSanPinGroupAll();
+        setFoodGroups(response);
     });
 
     useEffect(() => {
@@ -30,13 +28,13 @@ const SanPinGroupView: React.FunctionComponent = () => {
 
     async function AddNewFoodGroup(model: FoodGroupPostModel) {
 
-        const response = await PostService.PostFoodGroupSanPin(model);
+        const response = await service?.PostService.SanPinServer.PostFoodGroupSanPin(model);
         loadingFoodGroupAll();
     }
 
     async function DeleteFoodGroup(id: string) {
 
-        const response = await DeleteService.DeleteSanPinGroup(id);
+        const response = await service?.DeleteService.SanPinService.DeleteSanPinGroup(id);
         loadingFoodGroupAll();
     }
 
@@ -46,7 +44,7 @@ const SanPinGroupView: React.FunctionComponent = () => {
             Name: value
         };
 
-        const response = await PutService.PutFoodGroupSanpin(id, model);
+        const response = await service?.PutService.SanPinServer.PutFoodGroupSanpin(id, model);
         loadingFoodGroupAll();
     }
 
