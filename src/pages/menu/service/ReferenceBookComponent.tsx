@@ -1,7 +1,7 @@
 import React from 'react';
 import { Stack } from 'react-bootstrap';
 import MenuSvg from '../../../components/common/svg/MenuSvg';
-import FoodAllView from '../../../components/FoodAllView';
+import FoodsView from '../../../components/referenceBook/food/FoodsView';
 import FoodGroupView from '../../../components/referenceBook/foodGroup/FoodGroupView';
 import SanPinGroup from '../../../components/referenceBook/sanpin/SanPinGroup';
 import { useGlobalContext } from '../../../hook/GlobalContext';
@@ -23,7 +23,7 @@ const ReferenceBook: React.FunctionComponent = () => {
 
         <CardMenuComponent className='col' description='Группы продуктов' component={<MenuSvg />} onClick={() => Navigator(<FoodGroupView />)} />
         <CardMenuComponent className='col' description='Группы СапПин' component={<MenuSvg />} onClick={() => Navigator(<SanPinGroup />)} />
-        <CardMenuComponent className='col' description='Продукты' component={<MenuSvg />} onClick={() => Navigator(<FoodAllView />)} />
+        <CardMenuComponent className='col' description='Продукты' component={<MenuSvg />} onClick={() => Navigator(<FoodsView />)} />
       </div>
     </div>
   );

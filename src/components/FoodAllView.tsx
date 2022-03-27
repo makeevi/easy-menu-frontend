@@ -8,13 +8,14 @@ import YupValidationStringComponent from './common/YupValidationStringComponent'
 import { format } from 'date-fns';
 import AccordionComponent from './common/AccordionComponent';
 import { useGlobalContext } from '../hook/GlobalContext';
-import { GetFoodModel } from '../api/get/models/food/food/GetFoodModel';
+import { GetFoodDetailModel } from '../api/get/models/food/food/GetFoodDetailModel';
+import { GetFoodShortModel } from '../api/get/models/food/food/GetFoodShortModel';
 
 const FoodAllView: React.FunctionComponent = () => {
 
     const { service } = useGlobalContext();
 
-    const [foods, setFoods] = useState<GetFoodModel[]>();
+    const [foods, setFoods] = useState<GetFoodShortModel[]>();
     const [loadingFoodAll, isLoadingFoodAll, error] = useIsLoading(async () => {
 
         const response = await service?.GetService.FoodService.GetFoodAll();

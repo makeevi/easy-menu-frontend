@@ -23,7 +23,6 @@ const FoodGroupView: React.FunctionComponent = () => {
   useEffect(() => {
 
     loadingFoodGroupAll();
-
   }, []);
 
   async function AddNewFoodGroup(model: FoodGroupPostModel) {
