@@ -23,7 +23,7 @@ const LinkPrimaryButton: React.FunctionComponent<Props> = (props) => {
     function GetIcon() {
         switch (props.role) {
             case Role.add:
-                return <PlusSvg/>;
+                return <PlusSvg />;
 
             case Role.edit:
                 return <PencilSvg />;
@@ -38,7 +38,17 @@ const LinkPrimaryButton: React.FunctionComponent<Props> = (props) => {
             if (props.onClick !== undefined)
                 props.onClick()
         }} >
-            {GetIcon()}
+
+            <div className="hstack gap-3">
+                {GetIcon()}
+                {props.children}
+
+            </div>
+
+
+
+
+
         </Button>
     );
 };

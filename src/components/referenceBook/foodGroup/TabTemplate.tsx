@@ -55,7 +55,9 @@ const TabTemplate: React.FunctionComponent<Props> = (props) => {
             onMouseEnter={() => setSelect(true)}
             onClick={() => { isSelect && setShowCard(true); }}>
 
-            <th scope="row">{props.index}</th>
+            <th scope="row">
+                <div style={{ marginLeft: "13px" }}>{props.index}</div>
+            </th>
             <td>{props.name}</td>
 
             <td>{props.count}</td>
@@ -74,7 +76,7 @@ const TabTemplate: React.FunctionComponent<Props> = (props) => {
                     </ModalComponent>
 
                 </Stack></td>
-        </tr>
+        </tr >
     }
     //{format(new Date(props.start_date), 'yyyy-MM-dd')}
 
